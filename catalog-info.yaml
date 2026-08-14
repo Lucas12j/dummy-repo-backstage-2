@@ -95,7 +95,7 @@ spec:
   definition: |
     openapi: 3.0.3
     info:
-      title: Example Payments API
+      title: Example Payments API [2]
       version: 1.0.0
     paths:
       /payments:
