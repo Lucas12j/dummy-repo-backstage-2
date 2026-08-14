@@ -1,0 +1,8 @@
+site_name: Example Orders Service
+docs_dir: docs
+nav:
+  - Inicio: index.md
+  - Arquitetura: architecture.md
+  - Operacao: operations.md
+plugins:
+  - techdocs-core

@@ -1,0 +1,7 @@
+stages: [test]
+validate:
+  image: node:20-alpine
+  stage: test
+  script:
+    - npm install
+    - node --check src/index.js

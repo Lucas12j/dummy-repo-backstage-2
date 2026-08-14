@@ -1,0 +1,132 @@
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: commerce
+  description: Dominio de comercio da empresa
+spec:
+  owner: user:default/guest
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: example-commerce
+  description: Sistema demonstrativo de pedidos
+spec:
+  owner: user:default/guest
+  domain: commerce
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-orders-service
+  title: Example Orders Service
+  description: API demonstrativa para gerenciamento de pedidos
+  tags:
+    - nodejs
+    - typescript
+    - rest
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    gitlab.com/project-slug: SEU_GRUPO/backstage-example-service
+  links:
+    - url: http://localhost:8081/health
+      title: Health Check
+      icon: dashboard
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:default/guest
+  system: example-commerce
+  providesApis:
+    - example-orders-api
+  consumesApis:
+    - example-payments-api
+  dependsOn:
+    - resource:default/example-orders-db
+    - resource:default/example-orders-cache
+    - component:default/example-orders-worker
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-orders-worker
+  title: Example Orders Worker
+  description: Worker demonstrativo para processamento assincrono de pedidos
+  tags:
+    - nodejs
+    - worker
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:default/guest
+  system: example-commerce
+  dependsOn:
+    - resource:default/example-orders-db
+    - resource:default/example-orders-cache
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: example-orders-api
+  title: Example Orders API
+  description: API REST publica pelo servico de pedidos
+  tags:
+    - openapi
+    - orders
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:default/guest
+  system: example-commerce
+  definition:
+    $text: ./openapi/orders-api.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: example-payments-api
+  title: Example Payments API
+  description: API externa consumida pelo servico de pedidos
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:default/guest
+  system: example-commerce
+  definition: |
+    openapi: 3.0.3
+    info:
+      title: Example Payments API
+      version: 1.0.0
+    paths:
+      /payments:
+        post:
+          summary: Processa um pagamento
+          responses:
+            '202':
+              description: Pagamento aceito
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: example-orders-db
+  title: Orders PostgreSQL
+  description: Banco PostgreSQL do servico de pedidos
+  tags:
+    - postgresql
+spec:
+  type: database
+  owner: user:default/guest
+  system: example-commerce
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: example-orders-cache
+  title: Orders Redis Cache
+  description: Cache utilizado pelo servico e pelo worker
+  tags:
+    - redis
+spec:
+  type: cache
+  owner: user:default/guest
+  system: example-commerce

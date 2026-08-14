@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: Example Orders API
+  version: 1.0.0
+  description: API demonstrativa de pedidos
+servers:
+  - url: http://localhost:8081
+paths:
+  /health:
+    get:
+      summary: Verifica a saude do servico
+      responses:
+        '200':
+          description: Servico disponivel
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+  /orders:
+    get:
+      summary: Lista pedidos
+      responses:
+        '200':
+          description: Lista retornada
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    post:
+      summary: Cria um pedido
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewOrder'
+      responses:
+        '201':
+          description: Pedido criado
+components:
+  schemas:
+    Order:
+      type: object
+      required: [id, product, quantity]
+      properties:
+        id: { type: string }
+        product: { type: string }
+        quantity: { type: integer, minimum: 1 }
+    NewOrder:
+      type: object
+      required: [product, quantity]
+      properties:
+        product: { type: string }
+        quantity: { type: integer, minimum: 1 }
