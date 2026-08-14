@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Example Orders API
+  title: Example Orders API [2]
   version: 1.0.0
   description: API demonstrativa de pedidos
 servers:
