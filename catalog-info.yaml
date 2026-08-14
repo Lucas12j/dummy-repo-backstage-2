@@ -4,7 +4,7 @@ metadata:
   name: commerce
   description: Dominio de comercio da empresa
 spec:
-  owner:user:DIPLA  
+  owner: user:DIPLA  
 ---
 apiVersion: backstage.io/v1alpha1
 kind: System
@@ -12,7 +12,7 @@ metadata:
   name: example-commerce
   description: Sistema demonstrativo de pedidos
 spec:
-  owner:group:DIPLA
+  owner: group:DIPLA
   domain: commerce
 ---
 apiVersion: backstage.io/v1alpha1
@@ -35,7 +35,7 @@ metadata:
 spec:
   type: service
   lifecycle: experimental
-  owner:group:DTIC-I
+  owner: group:DTIC-I
   system: example-commerce
   providesApis:
     - example-orders-api
