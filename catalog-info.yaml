@@ -68,7 +68,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: example-orders-api
-  title: Example Orders API
+  title: Example Orders API [2]
   description: API REST publica pelo servico de pedidos
   tags:
     - openapi
