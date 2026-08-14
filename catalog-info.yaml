@@ -85,7 +85,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: example-payments-api
-  title: Example Payments API
+  title: Example Payments API [2]
   description: API externa consumida pelo servico de pedidos
 spec:
   type: openapi
