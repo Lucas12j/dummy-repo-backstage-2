@@ -79,6 +79,7 @@ spec:
   owner: group:DTIC-III
   system: example-commerce
   definition:
+    backstage.io/techdocs-ref: dir:.
     $text: ./openapi/orders-api.yaml
 ---
 apiVersion: backstage.io/v1alpha1
@@ -104,6 +105,7 @@ spec:
           responses:
             '202':
               description: Pagamento aceito
+    backstage.io/techdocs-ref: dir:.
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Resource
