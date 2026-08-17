@@ -67,7 +67,8 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  backstage.io/techdocs-ref: dir:.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
   name: example-orders-api
   title: Example Orders API [2]
   description: API REST publica pelo servico de pedidos
@@ -85,7 +86,8 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  backstage.io/techdocs-ref: dir:.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
   name: example-payments-api
   title: Example Payments API [2]
   description: API externa consumida pelo servico de pedidos
