@@ -67,6 +67,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
+  backstage.io/techdocs-ref: dir:.
   name: example-orders-api
   title: Example Orders API [2]
   description: API REST publica pelo servico de pedidos
@@ -79,12 +80,12 @@ spec:
   owner: group:DTIC-III
   system: example-commerce
   definition:
-    backstage.io/techdocs-ref: dir:.
     $text: ./openapi/orders-api.yaml
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
+  backstage.io/techdocs-ref: dir:.
   name: example-payments-api
   title: Example Payments API [2]
   description: API externa consumida pelo servico de pedidos
@@ -105,7 +106,7 @@ spec:
           responses:
             '202':
               description: Pagamento aceito
-    backstage.io/techdocs-ref: dir:.
+    
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Resource
