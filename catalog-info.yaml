@@ -45,6 +45,7 @@ spec:
     - resource:default/example-orders-db
     - resource:default/example-orders-cache
     - component:default/example-orders-worker
+    - resource:production/shared-orders-postgresql
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
