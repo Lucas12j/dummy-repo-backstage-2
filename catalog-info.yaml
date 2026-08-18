@@ -66,6 +66,7 @@ spec:
   dependsOn:
     - resource:default/example-orders-db
     - resource:default/example-orders-cache
+    - resource:production/shared-sessions-redis
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
