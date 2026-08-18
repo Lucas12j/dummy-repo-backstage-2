@@ -49,6 +49,8 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
+  annotations:
+    backstage.io/techdocs-ref: dir:.
   name: example-orders-worker
   title: Example Orders Worker
   description: Worker demonstrativo para processamento assincrono de pedidos
